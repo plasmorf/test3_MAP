@@ -12,7 +12,11 @@ import java.util.Map;
  * Created by plasmorf on 25.09.2015.
  */
 public class InOut {
+    /* Засасываем файл в МАПу с рпазбором на слова
+       @param Reader    ссылка на ридер с файлом
+       @return          МАПа, заполненная распарсеными и обработаными данными
 
+     */
     public static Map<String, Integer> scan(Reader r) throws IOException {
         String word="";
         Map<String, Integer> myList = new HashMap<>();
@@ -32,6 +36,10 @@ public class InOut {
         return myList;
     }
 
+    /* Выводим результаты
+       @param 1     лист от МАПы
+              2     ссылка на файл, в который выгружать данные, если он = null, то выводим все в консоль
+     */
     public static void outResult(List<Map.Entry<String, Integer>> m, Writer w) throws IOException {
 
         int totalWords = 0;
@@ -51,7 +59,7 @@ public class InOut {
             }
             // Вывод в файл
             else{
-                w.write(entry.getKey() +" :     " + entry.getValue());
+                w.write(entry.getKey() +";" + entry.getValue()+";"+String.valueOf (entry.getValue()*100./totalWords));
             }
 
 
