@@ -8,13 +8,14 @@ public class Main {
         try(Reader r = new InputStreamReader(new BufferedInputStream(new FileInputStream(args[0])))) { //String.join(" ", args)
             MyList l = new MyList();
             l.setList(InOut.scan(r));
-            l.sort();
 
-            if (args[1] != ""){
-                Writer w = new OutputStreamWriter(new FileOutputStream(args[1]));
+            Writer w = null;
+
+            if (args.length > 1){
+                w = new OutputStreamWriter(new FileOutputStream(args[1]));
 
             }
-            l.getMyList();
+            InOut.outResult(l.sort(), w);
         }
     }
 }
